@@ -1,0 +1,147 @@
+ARM GAS  /tmp/cc6mKmKz.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"app.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "app/src/app.c"
+  18              		.section	.text.app_init,"ax",%progbits
+  19              		.align	1
+  20              		.global	app_init
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	app_init:
+  26              	.LFB0:
+   1:app/src/app.c **** #include "app.h"
+   2:app/src/app.c **** #include "bsp_led.h"
+   3:app/src/app.c **** #include "hw_button.h"
+   4:app/src/app.c **** #include "app_event.h"
+   5:app/src/app.c **** 
+   6:app/src/app.c **** 
+   7:app/src/app.c **** 
+   8:app/src/app.c **** void app_init(void)
+   9:app/src/app.c **** {
+  27              		.loc 1 9 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 08B5     		push	{r3, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  10:app/src/app.c ****     bsp_led_init();
+  36              		.loc 1 10 5 view .LVU1
+  37 0002 FFF7FEFF 		bl	bsp_led_init
+  38              	.LVL0:
+  11:app/src/app.c ****     hw_button_init(HW_BUTTON_USER);
+  39              		.loc 1 11 5 view .LVU2
+  40 0006 0020     		movs	r0, #0
+  41 0008 FFF7FEFF 		bl	hw_button_init
+  42              	.LVL1:
+  12:app/src/app.c **** }
+  43              		.loc 1 12 1 is_stmt 0 view .LVU3
+  44 000c 08BD     		pop	{r3, pc}
+  45              		.cfi_endproc
+  46              	.LFE0:
+ARM GAS  /tmp/cc6mKmKz.s 			page 2
+
+
+  48              		.section	.text.app_loop,"ax",%progbits
+  49              		.align	1
+  50              		.global	app_loop
+  51              		.syntax unified
+  52              		.thumb
+  53              		.thumb_func
+  55              	app_loop:
+  56              	.LFB1:
+  13:app/src/app.c **** 
+  14:app/src/app.c **** void app_loop() {
+  57              		.loc 1 14 17 is_stmt 1 view -0
+  58              		.cfi_startproc
+  59              		@ args = 0, pretend = 0, frame = 8
+  60              		@ frame_needed = 0, uses_anonymous_args = 0
+  61 0000 00B5     		push	{lr}
+  62              	.LCFI1:
+  63              		.cfi_def_cfa_offset 4
+  64              		.cfi_offset 14, -4
+  65 0002 83B0     		sub	sp, sp, #12
+  66              	.LCFI2:
+  67              		.cfi_def_cfa_offset 16
+  15:app/src/app.c ****     app_event_t evt;
+  68              		.loc 1 15 5 view .LVU5
+  16:app/src/app.c ****     while (app_event_pop(&evt))
+  69              		.loc 1 16 5 view .LVU6
+  70              	.L5:
+  71              		.loc 1 16 12 view .LVU7
+  72 0004 0DF10700 		add	r0, sp, #7
+  73 0008 FFF7FEFF 		bl	app_event_pop
+  74              	.LVL2:
+  75              		.loc 1 16 12 is_stmt 0 discriminator 1 view .LVU8
+  76 000c 30B1     		cbz	r0, .L8
+  17:app/src/app.c ****     {
+  18:app/src/app.c ****         switch (evt)
+  77              		.loc 1 18 9 is_stmt 1 view .LVU9
+  78 000e 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+  79 0012 072B     		cmp	r3, #7
+  80 0014 F6D1     		bne	.L5
+  19:app/src/app.c ****         {
+  20:app/src/app.c ****         case APP_EVENT_BUTTON_PRESS:
+  21:app/src/app.c ****             bsp_led_toggle();
+  81              		.loc 1 21 13 view .LVU10
+  82 0016 FFF7FEFF 		bl	bsp_led_toggle
+  83              	.LVL3:
+  22:app/src/app.c ****             break;
+  84              		.loc 1 22 13 view .LVU11
+  85 001a F3E7     		b	.L5
+  86              	.L8:
+  23:app/src/app.c ****         default:
+  24:app/src/app.c ****             break;
+  25:app/src/app.c ****         }
+  26:app/src/app.c ****     }
+  27:app/src/app.c **** }...
+  87              		.loc 1 27 1 is_stmt 0 view .LVU12
+  88 001c 03B0     		add	sp, sp, #12
+  89              	.LCFI3:
+  90              		.cfi_def_cfa_offset 4
+ARM GAS  /tmp/cc6mKmKz.s 			page 3
+
+
+  91              		@ sp needed
+  92 001e 5DF804FB 		ldr	pc, [sp], #4
+  93              		.cfi_endproc
+  94              	.LFE1:
+  96              		.text
+  97              	.Letext0:
+  98              		.file 2 "hardware/inc/hw_button.h"
+  99              		.file 3 "app/inc/app_event.h"
+ 100              		.file 4 "bsp/inc/bsp_led.h"
+ARM GAS  /tmp/cc6mKmKz.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 app.c
+     /tmp/cc6mKmKz.s:19     .text.app_init:00000000 $t
+     /tmp/cc6mKmKz.s:25     .text.app_init:00000000 app_init
+     /tmp/cc6mKmKz.s:49     .text.app_loop:00000000 $t
+     /tmp/cc6mKmKz.s:55     .text.app_loop:00000000 app_loop
+
+UNDEFINED SYMBOLS
+bsp_led_init
+hw_button_init
+app_event_pop
+bsp_led_toggle

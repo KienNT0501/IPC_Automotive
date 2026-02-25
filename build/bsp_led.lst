@@ -1,0 +1,176 @@
+ARM GAS  /tmp/ccoC99pi.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"bsp_led.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "bsp/src/bsp_led.c"
+  18              		.section	.text.bsp_led_init,"ax",%progbits
+  19              		.align	1
+  20              		.global	bsp_led_init
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	bsp_led_init:
+  26              	.LFB65:
+   1:bsp/src/bsp_led.c **** #include "bsp_led.h"
+   2:bsp/src/bsp_led.c **** #include "hw_led.h"
+   3:bsp/src/bsp_led.c **** 
+   4:bsp/src/bsp_led.c **** 
+   5:bsp/src/bsp_led.c **** void bsp_led_init(void)
+   6:bsp/src/bsp_led.c **** {
+  27              		.loc 1 6 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 08B5     		push	{r3, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+   7:bsp/src/bsp_led.c ****     LED_Init(HW_GPIO_A, GPIO_PIN_8);
+  36              		.loc 1 7 5 view .LVU1
+  37 0002 4FF48071 		mov	r1, #256
+  38 0006 0020     		movs	r0, #0
+  39 0008 FFF7FEFF 		bl	LED_Init
+  40              	.LVL0:
+   8:bsp/src/bsp_led.c **** }
+  41              		.loc 1 8 1 is_stmt 0 view .LVU2
+  42 000c 08BD     		pop	{r3, pc}
+  43              		.cfi_endproc
+  44              	.LFE65:
+  46              		.section	.text.bsp_led_on,"ax",%progbits
+  47              		.align	1
+  48              		.global	bsp_led_on
+  49              		.syntax unified
+  50              		.thumb
+  51              		.thumb_func
+ARM GAS  /tmp/ccoC99pi.s 			page 2
+
+
+  53              	bsp_led_on:
+  54              	.LFB66:
+   9:bsp/src/bsp_led.c **** 
+  10:bsp/src/bsp_led.c **** void bsp_led_on(void)
+  11:bsp/src/bsp_led.c **** {
+  55              		.loc 1 11 1 is_stmt 1 view -0
+  56              		.cfi_startproc
+  57              		@ args = 0, pretend = 0, frame = 0
+  58              		@ frame_needed = 0, uses_anonymous_args = 0
+  59 0000 08B5     		push	{r3, lr}
+  60              	.LCFI1:
+  61              		.cfi_def_cfa_offset 8
+  62              		.cfi_offset 3, -8
+  63              		.cfi_offset 14, -4
+  12:bsp/src/bsp_led.c ****     LED_On(HW_GPIO_A, GPIO_PIN_8);
+  64              		.loc 1 12 5 view .LVU4
+  65 0002 4FF48071 		mov	r1, #256
+  66 0006 0020     		movs	r0, #0
+  67 0008 FFF7FEFF 		bl	LED_On
+  68              	.LVL1:
+  13:bsp/src/bsp_led.c **** }
+  69              		.loc 1 13 1 is_stmt 0 view .LVU5
+  70 000c 08BD     		pop	{r3, pc}
+  71              		.cfi_endproc
+  72              	.LFE66:
+  74              		.section	.text.bsp_led_off,"ax",%progbits
+  75              		.align	1
+  76              		.global	bsp_led_off
+  77              		.syntax unified
+  78              		.thumb
+  79              		.thumb_func
+  81              	bsp_led_off:
+  82              	.LFB67:
+  14:bsp/src/bsp_led.c **** 
+  15:bsp/src/bsp_led.c **** void bsp_led_off(void)
+  16:bsp/src/bsp_led.c **** {
+  83              		.loc 1 16 1 is_stmt 1 view -0
+  84              		.cfi_startproc
+  85              		@ args = 0, pretend = 0, frame = 0
+  86              		@ frame_needed = 0, uses_anonymous_args = 0
+  87 0000 08B5     		push	{r3, lr}
+  88              	.LCFI2:
+  89              		.cfi_def_cfa_offset 8
+  90              		.cfi_offset 3, -8
+  91              		.cfi_offset 14, -4
+  17:bsp/src/bsp_led.c ****     LED_Off(HW_GPIO_A, GPIO_PIN_8);
+  92              		.loc 1 17 5 view .LVU7
+  93 0002 4FF48071 		mov	r1, #256
+  94 0006 0020     		movs	r0, #0
+  95 0008 FFF7FEFF 		bl	LED_Off
+  96              	.LVL2:
+  18:bsp/src/bsp_led.c **** }
+  97              		.loc 1 18 1 is_stmt 0 view .LVU8
+  98 000c 08BD     		pop	{r3, pc}
+  99              		.cfi_endproc
+ 100              	.LFE67:
+ 102              		.section	.text.bsp_led_toggle,"ax",%progbits
+ARM GAS  /tmp/ccoC99pi.s 			page 3
+
+
+ 103              		.align	1
+ 104              		.global	bsp_led_toggle
+ 105              		.syntax unified
+ 106              		.thumb
+ 107              		.thumb_func
+ 109              	bsp_led_toggle:
+ 110              	.LFB68:
+  19:bsp/src/bsp_led.c **** 
+  20:bsp/src/bsp_led.c **** void bsp_led_toggle(void)
+  21:bsp/src/bsp_led.c **** {
+ 111              		.loc 1 21 1 is_stmt 1 view -0
+ 112              		.cfi_startproc
+ 113              		@ args = 0, pretend = 0, frame = 0
+ 114              		@ frame_needed = 0, uses_anonymous_args = 0
+ 115 0000 08B5     		push	{r3, lr}
+ 116              	.LCFI3:
+ 117              		.cfi_def_cfa_offset 8
+ 118              		.cfi_offset 3, -8
+ 119              		.cfi_offset 14, -4
+  22:bsp/src/bsp_led.c ****     LED_Toggle(HW_GPIO_A, GPIO_PIN_8);
+ 120              		.loc 1 22 5 view .LVU10
+ 121 0002 4FF48071 		mov	r1, #256
+ 122 0006 0020     		movs	r0, #0
+ 123 0008 FFF7FEFF 		bl	LED_Toggle
+ 124              	.LVL3:
+  23:bsp/src/bsp_led.c **** }
+ 125              		.loc 1 23 1 is_stmt 0 view .LVU11
+ 126 000c 08BD     		pop	{r3, pc}
+ 127              		.cfi_endproc
+ 128              	.LFE68:
+ 130              		.text
+ 131              	.Letext0:
+ 132              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h"
+ 133              		.file 3 "hardware/inc/hw_led.h"
+ARM GAS  /tmp/ccoC99pi.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 bsp_led.c
+     /tmp/ccoC99pi.s:19     .text.bsp_led_init:00000000 $t
+     /tmp/ccoC99pi.s:25     .text.bsp_led_init:00000000 bsp_led_init
+     /tmp/ccoC99pi.s:47     .text.bsp_led_on:00000000 $t
+     /tmp/ccoC99pi.s:53     .text.bsp_led_on:00000000 bsp_led_on
+     /tmp/ccoC99pi.s:75     .text.bsp_led_off:00000000 $t
+     /tmp/ccoC99pi.s:81     .text.bsp_led_off:00000000 bsp_led_off
+     /tmp/ccoC99pi.s:103    .text.bsp_led_toggle:00000000 $t
+     /tmp/ccoC99pi.s:109    .text.bsp_led_toggle:00000000 bsp_led_toggle
+
+UNDEFINED SYMBOLS
+LED_Init
+LED_On
+LED_Off
+LED_Toggle

@@ -20,7 +20,7 @@
 #include "main.h"
 #include "usart.h"
 #include "gpio.h"
-
+#include "app.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -75,7 +75,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+  app_init();
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -97,7 +97,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+    app_loop();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */

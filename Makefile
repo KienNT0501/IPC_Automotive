@@ -55,8 +55,12 @@ Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c \
 Core/Src/system_stm32f1xx.c \
 Core/Src/sysmem.c \
-Core/Src/syscalls.c  
-
+Core/Src/syscalls.c \
+app/src/app_event.c \
+app/src/app.c \
+bsp/src/bsp_led.c \
+hardware/src/hw_button.c \
+hardware/src/hw_led.c \
 # ASM sources
 ASM_SOURCES =  \
 startup_stm32f103xe.s
@@ -120,8 +124,10 @@ C_INCLUDES =  \
 -IDrivers/STM32F1xx_HAL_Driver/Inc \
 -IDrivers/STM32F1xx_HAL_Driver/Inc/Legacy \
 -IDrivers/CMSIS/Device/ST/STM32F1xx/Include \
--IDrivers/CMSIS/Include
-
+-IDrivers/CMSIS/Include \
+-Iapp/inc \
+-Ibsp/inc \
+-Ihardware/inc
 
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections

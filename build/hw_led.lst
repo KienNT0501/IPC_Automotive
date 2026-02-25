@@ -1,0 +1,465 @@
+ARM GAS  /tmp/cc6jRUNb.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"hw_led.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "hardware/src/hw_led.c"
+  18              		.section	.text.hw_led_port_to_gpio,"ax",%progbits
+  19              		.align	1
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	hw_led_port_to_gpio:
+  25              	.LVL0:
+  26              	.LFB65:
+   1:hardware/src/hw_led.c **** #include "hw_led.h"
+   2:hardware/src/hw_led.c **** #include "stm32f1xx_hal.h"
+   3:hardware/src/hw_led.c **** 
+   4:hardware/src/hw_led.c **** /* ================= PRIVATE ================= */
+   5:hardware/src/hw_led.c **** 
+   6:hardware/src/hw_led.c **** static GPIO_TypeDef* hw_led_port_to_gpio(HW_LED_PORT_t port)
+   7:hardware/src/hw_led.c **** {
+  27              		.loc 1 7 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31              		@ link register save eliminated.
+   8:hardware/src/hw_led.c ****     switch (port)
+  32              		.loc 1 8 5 view .LVU1
+  33 0000 0128     		cmp	r0, #1
+  34 0002 03D0     		beq	.L3
+  35 0004 0228     		cmp	r0, #2
+  36 0006 03D1     		bne	.L4
+   9:hardware/src/hw_led.c ****     {
+  10:hardware/src/hw_led.c ****     case HW_GPIO_A: return GPIOA;
+  11:hardware/src/hw_led.c ****     case HW_GPIO_B: return GPIOB;
+  12:hardware/src/hw_led.c ****     case HW_GPIO_C: return GPIOC;
+  37              		.loc 1 12 28 is_stmt 0 view .LVU2
+  38 0008 0248     		ldr	r0, .L5
+  39              	.LVL1:
+  40              		.loc 1 12 28 view .LVU3
+  41 000a 7047     		bx	lr
+  42              	.LVL2:
+  43              	.L3:
+  11:hardware/src/hw_led.c ****     case HW_GPIO_C: return GPIOC;
+  44              		.loc 1 11 28 view .LVU4
+  45 000c 0248     		ldr	r0, .L5+4
+ARM GAS  /tmp/cc6jRUNb.s 			page 2
+
+
+  46              	.LVL3:
+  11:hardware/src/hw_led.c ****     case HW_GPIO_C: return GPIOC;
+  47              		.loc 1 11 28 view .LVU5
+  48 000e 7047     		bx	lr
+  49              	.LVL4:
+  50              	.L4:
+   8:hardware/src/hw_led.c ****     switch (port)
+  51              		.loc 1 8 5 view .LVU6
+  52 0010 0248     		ldr	r0, .L5+8
+  53              	.LVL5:
+  13:hardware/src/hw_led.c ****     default:        return GPIOA;
+  14:hardware/src/hw_led.c ****     }
+  15:hardware/src/hw_led.c **** }
+  54              		.loc 1 15 1 view .LVU7
+  55 0012 7047     		bx	lr
+  56              	.L6:
+  57              		.align	2
+  58              	.L5:
+  59 0014 00100140 		.word	1073811456
+  60 0018 000C0140 		.word	1073810432
+  61 001c 00080140 		.word	1073809408
+  62              		.cfi_endproc
+  63              	.LFE65:
+  65              		.section	.text.hw_led_enable_clock,"ax",%progbits
+  66              		.align	1
+  67              		.syntax unified
+  68              		.thumb
+  69              		.thumb_func
+  71              	hw_led_enable_clock:
+  72              	.LVL6:
+  73              	.LFB67:
+  16:hardware/src/hw_led.c **** static GPIO_PinState state_led_to_gpio_pin_state(int state)
+  17:hardware/src/hw_led.c **** {
+  18:hardware/src/hw_led.c ****     switch(state){
+  19:hardware/src/hw_led.c ****         case 1: return GPIO_PIN_SET;
+  20:hardware/src/hw_led.c ****         case 0: return GPIO_PIN_RESET;
+  21:hardware/src/hw_led.c ****     }
+  22:hardware/src/hw_led.c **** }
+  23:hardware/src/hw_led.c **** static void hw_led_enable_clock(HW_LED_PORT_t port)
+  24:hardware/src/hw_led.c **** {
+  74              		.loc 1 24 1 is_stmt 1 view -0
+  75              		.cfi_startproc
+  76              		@ args = 0, pretend = 0, frame = 16
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78              		@ link register save eliminated.
+  79              		.loc 1 24 1 is_stmt 0 view .LVU9
+  80 0000 84B0     		sub	sp, sp, #16
+  81              	.LCFI0:
+  82              		.cfi_def_cfa_offset 16
+  25:hardware/src/hw_led.c ****     switch (port)
+  83              		.loc 1 25 5 is_stmt 1 view .LVU10
+  84 0002 0128     		cmp	r0, #1
+  85 0004 0ED0     		beq	.L8
+  86 0006 0228     		cmp	r0, #2
+  87 0008 17D0     		beq	.L9
+  88 000a 48B9     		cbnz	r0, .L7
+  26:hardware/src/hw_led.c ****     {
+ARM GAS  /tmp/cc6jRUNb.s 			page 3
+
+
+  27:hardware/src/hw_led.c ****     case HW_GPIO_A:
+  28:hardware/src/hw_led.c ****         __HAL_RCC_GPIOA_CLK_ENABLE();
+  89              		.loc 1 28 9 view .LVU11
+  90              	.LBB2:
+  91              		.loc 1 28 9 view .LVU12
+  92              		.loc 1 28 9 view .LVU13
+  93 000c 104B     		ldr	r3, .L12
+  94 000e 9A69     		ldr	r2, [r3, #24]
+  95 0010 42F00402 		orr	r2, r2, #4
+  96 0014 9A61     		str	r2, [r3, #24]
+  97              		.loc 1 28 9 view .LVU14
+  98 0016 9B69     		ldr	r3, [r3, #24]
+  99 0018 03F00403 		and	r3, r3, #4
+ 100 001c 0193     		str	r3, [sp, #4]
+ 101              		.loc 1 28 9 view .LVU15
+ 102 001e 019B     		ldr	r3, [sp, #4]
+ 103              	.LBE2:
+ 104              		.loc 1 28 9 view .LVU16
+  29:hardware/src/hw_led.c ****         break;
+ 105              		.loc 1 29 9 view .LVU17
+ 106              	.L7:
+  30:hardware/src/hw_led.c ****     case HW_GPIO_B:
+  31:hardware/src/hw_led.c ****         __HAL_RCC_GPIOB_CLK_ENABLE();
+  32:hardware/src/hw_led.c ****         break;
+  33:hardware/src/hw_led.c ****     case HW_GPIO_C:
+  34:hardware/src/hw_led.c ****         __HAL_RCC_GPIOC_CLK_ENABLE();
+  35:hardware/src/hw_led.c ****         break;
+  36:hardware/src/hw_led.c ****     default:
+  37:hardware/src/hw_led.c ****         break;
+  38:hardware/src/hw_led.c ****     }
+  39:hardware/src/hw_led.c **** }
+ 107              		.loc 1 39 1 is_stmt 0 view .LVU18
+ 108 0020 04B0     		add	sp, sp, #16
+ 109              	.LCFI1:
+ 110              		.cfi_remember_state
+ 111              		.cfi_def_cfa_offset 0
+ 112              		@ sp needed
+ 113 0022 7047     		bx	lr
+ 114              	.L8:
+ 115              	.LCFI2:
+ 116              		.cfi_restore_state
+  31:hardware/src/hw_led.c ****         break;
+ 117              		.loc 1 31 9 is_stmt 1 view .LVU19
+ 118              	.LBB3:
+  31:hardware/src/hw_led.c ****         break;
+ 119              		.loc 1 31 9 view .LVU20
+  31:hardware/src/hw_led.c ****         break;
+ 120              		.loc 1 31 9 view .LVU21
+ 121 0024 0A4B     		ldr	r3, .L12
+ 122 0026 9A69     		ldr	r2, [r3, #24]
+ 123 0028 42F00802 		orr	r2, r2, #8
+ 124 002c 9A61     		str	r2, [r3, #24]
+  31:hardware/src/hw_led.c ****         break;
+ 125              		.loc 1 31 9 view .LVU22
+ 126 002e 9B69     		ldr	r3, [r3, #24]
+ 127 0030 03F00803 		and	r3, r3, #8
+ 128 0034 0293     		str	r3, [sp, #8]
+ARM GAS  /tmp/cc6jRUNb.s 			page 4
+
+
+  31:hardware/src/hw_led.c ****         break;
+ 129              		.loc 1 31 9 view .LVU23
+ 130 0036 029B     		ldr	r3, [sp, #8]
+ 131              	.LBE3:
+  31:hardware/src/hw_led.c ****         break;
+ 132              		.loc 1 31 9 view .LVU24
+  32:hardware/src/hw_led.c ****     case HW_GPIO_C:
+ 133              		.loc 1 32 9 view .LVU25
+ 134 0038 F2E7     		b	.L7
+ 135              	.L9:
+  34:hardware/src/hw_led.c ****         break;
+ 136              		.loc 1 34 9 view .LVU26
+ 137              	.LBB4:
+  34:hardware/src/hw_led.c ****         break;
+ 138              		.loc 1 34 9 view .LVU27
+  34:hardware/src/hw_led.c ****         break;
+ 139              		.loc 1 34 9 view .LVU28
+ 140 003a 054B     		ldr	r3, .L12
+ 141 003c 9A69     		ldr	r2, [r3, #24]
+ 142 003e 42F01002 		orr	r2, r2, #16
+ 143 0042 9A61     		str	r2, [r3, #24]
+  34:hardware/src/hw_led.c ****         break;
+ 144              		.loc 1 34 9 view .LVU29
+ 145 0044 9B69     		ldr	r3, [r3, #24]
+ 146 0046 03F01003 		and	r3, r3, #16
+ 147 004a 0393     		str	r3, [sp, #12]
+  34:hardware/src/hw_led.c ****         break;
+ 148              		.loc 1 34 9 view .LVU30
+ 149 004c 039B     		ldr	r3, [sp, #12]
+ 150              	.LBE4:
+  34:hardware/src/hw_led.c ****         break;
+ 151              		.loc 1 34 9 view .LVU31
+  35:hardware/src/hw_led.c ****     default:
+ 152              		.loc 1 35 9 view .LVU32
+ 153              		.loc 1 39 1 is_stmt 0 view .LVU33
+ 154 004e E7E7     		b	.L7
+ 155              	.L13:
+ 156              		.align	2
+ 157              	.L12:
+ 158 0050 00100240 		.word	1073876992
+ 159              		.cfi_endproc
+ 160              	.LFE67:
+ 162              		.section	.text.LED_Init,"ax",%progbits
+ 163              		.align	1
+ 164              		.global	LED_Init
+ 165              		.syntax unified
+ 166              		.thumb
+ 167              		.thumb_func
+ 169              	LED_Init:
+ 170              	.LVL7:
+ 171              	.LFB68:
+  40:hardware/src/hw_led.c **** 
+  41:hardware/src/hw_led.c **** /* ================= PUBLIC API ================= */
+  42:hardware/src/hw_led.c **** 
+  43:hardware/src/hw_led.c **** void LED_Init(HW_LED_PORT_t LED_PORT, HW_LED_PIN_t LED_PIN)
+  44:hardware/src/hw_led.c **** {
+ 172              		.loc 1 44 1 is_stmt 1 view -0
+ARM GAS  /tmp/cc6jRUNb.s 			page 5
+
+
+ 173              		.cfi_startproc
+ 174              		@ args = 0, pretend = 0, frame = 16
+ 175              		@ frame_needed = 0, uses_anonymous_args = 0
+ 176              		.loc 1 44 1 is_stmt 0 view .LVU35
+ 177 0000 70B5     		push	{r4, r5, r6, lr}
+ 178              	.LCFI3:
+ 179              		.cfi_def_cfa_offset 16
+ 180              		.cfi_offset 4, -16
+ 181              		.cfi_offset 5, -12
+ 182              		.cfi_offset 6, -8
+ 183              		.cfi_offset 14, -4
+ 184 0002 84B0     		sub	sp, sp, #16
+ 185              	.LCFI4:
+ 186              		.cfi_def_cfa_offset 32
+ 187 0004 0546     		mov	r5, r0
+ 188 0006 0C46     		mov	r4, r1
+  45:hardware/src/hw_led.c ****     hw_led_enable_clock(LED_PORT);
+ 189              		.loc 1 45 5 is_stmt 1 view .LVU36
+ 190 0008 FFF7FEFF 		bl	hw_led_enable_clock
+ 191              	.LVL8:
+  46:hardware/src/hw_led.c **** 
+  47:hardware/src/hw_led.c ****     GPIO_InitTypeDef gpio = {0};
+ 192              		.loc 1 47 5 view .LVU37
+ 193              		.loc 1 47 22 is_stmt 0 view .LVU38
+ 194 000c 0023     		movs	r3, #0
+ 195 000e 0093     		str	r3, [sp]
+ 196 0010 0193     		str	r3, [sp, #4]
+ 197 0012 0293     		str	r3, [sp, #8]
+ 198 0014 0393     		str	r3, [sp, #12]
+  48:hardware/src/hw_led.c ****     gpio.Pin = LED_PIN;
+ 199              		.loc 1 48 5 is_stmt 1 view .LVU39
+ 200              		.loc 1 48 14 is_stmt 0 view .LVU40
+ 201 0016 0094     		str	r4, [sp]
+  49:hardware/src/hw_led.c ****     gpio.Mode = GPIO_MODE_OUTPUT_PP;
+ 202              		.loc 1 49 5 is_stmt 1 view .LVU41
+ 203              		.loc 1 49 15 is_stmt 0 view .LVU42
+ 204 0018 0126     		movs	r6, #1
+ 205 001a 0196     		str	r6, [sp, #4]
+  50:hardware/src/hw_led.c ****     gpio.Speed = GPIO_SPEED_FREQ_LOW;
+ 206              		.loc 1 50 5 is_stmt 1 view .LVU43
+ 207              		.loc 1 50 16 is_stmt 0 view .LVU44
+ 208 001c 0223     		movs	r3, #2
+ 209 001e 0393     		str	r3, [sp, #12]
+  51:hardware/src/hw_led.c ****     HAL_GPIO_Init(hw_led_port_to_gpio(LED_PORT), &gpio);
+ 210              		.loc 1 51 5 is_stmt 1 view .LVU45
+ 211 0020 2846     		mov	r0, r5
+ 212 0022 FFF7FEFF 		bl	hw_led_port_to_gpio
+ 213              	.LVL9:
+ 214 0026 0546     		mov	r5, r0
+ 215              	.LVL10:
+ 216              		.loc 1 51 5 is_stmt 0 discriminator 1 view .LVU46
+ 217 0028 6946     		mov	r1, sp
+ 218 002a FFF7FEFF 		bl	HAL_GPIO_Init
+ 219              	.LVL11:
+  52:hardware/src/hw_led.c ****     HAL_GPIO_WritePin(hw_led_port_to_gpio(LED_PORT), LED_PIN, GPIO_PIN_SET);
+ 220              		.loc 1 52 5 is_stmt 1 view .LVU47
+ 221              		.loc 1 52 5 is_stmt 0 discriminator 1 view .LVU48
+ARM GAS  /tmp/cc6jRUNb.s 			page 6
+
+
+ 222 002e 3246     		mov	r2, r6
+ 223 0030 2146     		mov	r1, r4
+ 224 0032 2846     		mov	r0, r5
+ 225 0034 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 226              	.LVL12:
+  53:hardware/src/hw_led.c **** }
+ 227              		.loc 1 53 1 view .LVU49
+ 228 0038 04B0     		add	sp, sp, #16
+ 229              	.LCFI5:
+ 230              		.cfi_def_cfa_offset 16
+ 231              		@ sp needed
+ 232 003a 70BD     		pop	{r4, r5, r6, pc}
+ 233              		.loc 1 53 1 view .LVU50
+ 234              		.cfi_endproc
+ 235              	.LFE68:
+ 237              		.section	.text.LED_On,"ax",%progbits
+ 238              		.align	1
+ 239              		.global	LED_On
+ 240              		.syntax unified
+ 241              		.thumb
+ 242              		.thumb_func
+ 244              	LED_On:
+ 245              	.LVL13:
+ 246              	.LFB69:
+  54:hardware/src/hw_led.c **** 
+  55:hardware/src/hw_led.c **** void LED_On(HW_LED_PORT_t LED_PORT, HW_LED_PIN_t LED_PIN){
+ 247              		.loc 1 55 58 is_stmt 1 view -0
+ 248              		.cfi_startproc
+ 249              		@ args = 0, pretend = 0, frame = 0
+ 250              		@ frame_needed = 0, uses_anonymous_args = 0
+ 251              		.loc 1 55 58 is_stmt 0 view .LVU52
+ 252 0000 10B5     		push	{r4, lr}
+ 253              	.LCFI6:
+ 254              		.cfi_def_cfa_offset 8
+ 255              		.cfi_offset 4, -8
+ 256              		.cfi_offset 14, -4
+ 257 0002 0C46     		mov	r4, r1
+  56:hardware/src/hw_led.c ****     HAL_GPIO_WritePin(hw_led_port_to_gpio(LED_PORT), LED_PIN, GPIO_PIN_RESET);
+ 258              		.loc 1 56 5 is_stmt 1 view .LVU53
+ 259 0004 FFF7FEFF 		bl	hw_led_port_to_gpio
+ 260              	.LVL14:
+ 261              		.loc 1 56 5 is_stmt 0 discriminator 1 view .LVU54
+ 262 0008 0022     		movs	r2, #0
+ 263 000a 2146     		mov	r1, r4
+ 264 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 265              	.LVL15:
+  57:hardware/src/hw_led.c **** }
+ 266              		.loc 1 57 1 view .LVU55
+ 267 0010 10BD     		pop	{r4, pc}
+ 268              		.loc 1 57 1 view .LVU56
+ 269              		.cfi_endproc
+ 270              	.LFE69:
+ 272              		.section	.text.LED_Off,"ax",%progbits
+ 273              		.align	1
+ 274              		.global	LED_Off
+ 275              		.syntax unified
+ 276              		.thumb
+ARM GAS  /tmp/cc6jRUNb.s 			page 7
+
+
+ 277              		.thumb_func
+ 279              	LED_Off:
+ 280              	.LVL16:
+ 281              	.LFB70:
+  58:hardware/src/hw_led.c **** 
+  59:hardware/src/hw_led.c **** void LED_Off(HW_LED_PORT_t LED_PORT, HW_LED_PIN_t LED_PIN){
+ 282              		.loc 1 59 59 is_stmt 1 view -0
+ 283              		.cfi_startproc
+ 284              		@ args = 0, pretend = 0, frame = 0
+ 285              		@ frame_needed = 0, uses_anonymous_args = 0
+ 286              		.loc 1 59 59 is_stmt 0 view .LVU58
+ 287 0000 10B5     		push	{r4, lr}
+ 288              	.LCFI7:
+ 289              		.cfi_def_cfa_offset 8
+ 290              		.cfi_offset 4, -8
+ 291              		.cfi_offset 14, -4
+ 292 0002 0C46     		mov	r4, r1
+  60:hardware/src/hw_led.c ****     HAL_GPIO_WritePin(hw_led_port_to_gpio(LED_PORT), LED_PIN, GPIO_PIN_SET);
+ 293              		.loc 1 60 5 is_stmt 1 view .LVU59
+ 294 0004 FFF7FEFF 		bl	hw_led_port_to_gpio
+ 295              	.LVL17:
+ 296              		.loc 1 60 5 is_stmt 0 discriminator 1 view .LVU60
+ 297 0008 0122     		movs	r2, #1
+ 298 000a 2146     		mov	r1, r4
+ 299 000c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 300              	.LVL18:
+  61:hardware/src/hw_led.c **** }
+ 301              		.loc 1 61 1 view .LVU61
+ 302 0010 10BD     		pop	{r4, pc}
+ 303              		.loc 1 61 1 view .LVU62
+ 304              		.cfi_endproc
+ 305              	.LFE70:
+ 307              		.section	.text.LED_Toggle,"ax",%progbits
+ 308              		.align	1
+ 309              		.global	LED_Toggle
+ 310              		.syntax unified
+ 311              		.thumb
+ 312              		.thumb_func
+ 314              	LED_Toggle:
+ 315              	.LVL19:
+ 316              	.LFB71:
+  62:hardware/src/hw_led.c **** 
+  63:hardware/src/hw_led.c **** void LED_Toggle(HW_LED_PORT_t LED_PORT, HW_LED_PIN_t LED_PIN)
+  64:hardware/src/hw_led.c **** {
+ 317              		.loc 1 64 1 is_stmt 1 view -0
+ 318              		.cfi_startproc
+ 319              		@ args = 0, pretend = 0, frame = 0
+ 320              		@ frame_needed = 0, uses_anonymous_args = 0
+ 321              		.loc 1 64 1 is_stmt 0 view .LVU64
+ 322 0000 10B5     		push	{r4, lr}
+ 323              	.LCFI8:
+ 324              		.cfi_def_cfa_offset 8
+ 325              		.cfi_offset 4, -8
+ 326              		.cfi_offset 14, -4
+ 327 0002 0C46     		mov	r4, r1
+  65:hardware/src/hw_led.c ****     HAL_GPIO_TogglePin(hw_led_port_to_gpio(LED_PORT), LED_PIN);
+ 328              		.loc 1 65 5 is_stmt 1 view .LVU65
+ARM GAS  /tmp/cc6jRUNb.s 			page 8
+
+
+ 329 0004 FFF7FEFF 		bl	hw_led_port_to_gpio
+ 330              	.LVL20:
+ 331              		.loc 1 65 5 is_stmt 0 discriminator 1 view .LVU66
+ 332 0008 2146     		mov	r1, r4
+ 333 000a FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 334              	.LVL21:
+  66:hardware/src/hw_led.c **** }
+ 335              		.loc 1 66 1 view .LVU67
+ 336 000e 10BD     		pop	{r4, pc}
+ 337              		.loc 1 66 1 view .LVU68
+ 338              		.cfi_endproc
+ 339              	.LFE71:
+ 341              		.text
+ 342              	.Letext0:
+ 343              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h"
+ 344              		.file 3 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
+ 345              		.file 4 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
+ 346              		.file 5 "hardware/inc/hw_led.h"
+ARM GAS  /tmp/cc6jRUNb.s 			page 9
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 hw_led.c
+     /tmp/cc6jRUNb.s:19     .text.hw_led_port_to_gpio:00000000 $t
+     /tmp/cc6jRUNb.s:24     .text.hw_led_port_to_gpio:00000000 hw_led_port_to_gpio
+     /tmp/cc6jRUNb.s:59     .text.hw_led_port_to_gpio:00000014 $d
+     /tmp/cc6jRUNb.s:66     .text.hw_led_enable_clock:00000000 $t
+     /tmp/cc6jRUNb.s:71     .text.hw_led_enable_clock:00000000 hw_led_enable_clock
+     /tmp/cc6jRUNb.s:158    .text.hw_led_enable_clock:00000050 $d
+     /tmp/cc6jRUNb.s:163    .text.LED_Init:00000000 $t
+     /tmp/cc6jRUNb.s:169    .text.LED_Init:00000000 LED_Init
+     /tmp/cc6jRUNb.s:238    .text.LED_On:00000000 $t
+     /tmp/cc6jRUNb.s:244    .text.LED_On:00000000 LED_On
+     /tmp/cc6jRUNb.s:273    .text.LED_Off:00000000 $t
+     /tmp/cc6jRUNb.s:279    .text.LED_Off:00000000 LED_Off
+     /tmp/cc6jRUNb.s:308    .text.LED_Toggle:00000000 $t
+     /tmp/cc6jRUNb.s:314    .text.LED_Toggle:00000000 LED_Toggle
+
+UNDEFINED SYMBOLS
+HAL_GPIO_Init
+HAL_GPIO_WritePin
+HAL_GPIO_TogglePin

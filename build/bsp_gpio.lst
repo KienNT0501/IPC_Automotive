@@ -1,0 +1,109 @@
+ARM GAS  /tmp/ccw3ypPW.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"bsp_gpio.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "bsp/src/bsp_gpio.c"
+  18              		.section	.text.bsp_read_button,"ax",%progbits
+  19              		.align	1
+  20              		.global	bsp_read_button
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	bsp_read_button:
+  26              	.LVL0:
+  27              	.LFB0:
+   1:bsp/src/bsp_gpio.c **** #include "bsp_gpio.h"
+   2:bsp/src/bsp_gpio.c **** #include "hw_gpio.h"
+   3:bsp/src/bsp_gpio.c **** 
+   4:bsp/src/bsp_gpio.c **** typedef enum{
+   5:bsp/src/bsp_gpio.c ****     BSP_BUTTON_1 = 0,
+   6:bsp/src/bsp_gpio.c ****     BSP_BUTTON_FAULT
+   7:bsp/src/bsp_gpio.c **** } bsp_button_t;
+   8:bsp/src/bsp_gpio.c **** 
+   9:bsp/src/bsp_gpio.c **** bool bsp_read_button(bsp_button_t button){
+  28              		.loc 1 9 42 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		.loc 1 9 42 is_stmt 0 view .LVU1
+  33 0000 08B5     		push	{r3, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 3, -8
+  37              		.cfi_offset 14, -4
+  10:bsp/src/bsp_gpio.c ****     switch (button)
+  38              		.loc 1 10 5 is_stmt 1 view .LVU2
+  39 0002 18B1     		cbz	r0, .L2
+  40 0004 0128     		cmp	r0, #1
+  41 0006 05D0     		beq	.L3
+  42 0008 0020     		movs	r0, #0
+  43              	.LVL1:
+  44              		.loc 1 10 5 is_stmt 0 view .LVU3
+  45 000a 02E0     		b	.L4
+  46              	.LVL2:
+  47              	.L2:
+  11:bsp/src/bsp_gpio.c ****     {
+ARM GAS  /tmp/ccw3ypPW.s 			page 2
+
+
+  12:bsp/src/bsp_gpio.c ****         case BSP_BUTTON_1:
+  13:bsp/src/bsp_gpio.c ****             return HW_GPIO_Read(HW_GPIO_USER_BTN);
+  48              		.loc 1 13 13 is_stmt 1 view .LVU4
+  49              		.loc 1 13 20 is_stmt 0 view .LVU5
+  50 000c 0020     		movs	r0, #0
+  51              	.LVL3:
+  52              		.loc 1 13 20 view .LVU6
+  53 000e FFF7FEFF 		bl	HW_GPIO_Read
+  54              	.LVL4:
+  55              	.L4:
+  14:bsp/src/bsp_gpio.c ****         case BSP_BUTTON_FAULT:
+  15:bsp/src/bsp_gpio.c ****             return HW_GPIO_Read(HW_GPIO_FAULT_BTN);
+  16:bsp/src/bsp_gpio.c ****         default:
+  17:bsp/src/bsp_gpio.c ****             return false;
+  18:bsp/src/bsp_gpio.c ****     }
+  19:bsp/src/bsp_gpio.c **** }...
+  56              		.loc 1 19 1 view .LVU7
+  57 0012 08BD     		pop	{r3, pc}
+  58              	.LVL5:
+  59              	.L3:
+  15:bsp/src/bsp_gpio.c ****             return HW_GPIO_Read(HW_GPIO_FAULT_BTN);
+  60              		.loc 1 15 13 is_stmt 1 view .LVU8
+  15:bsp/src/bsp_gpio.c ****             return HW_GPIO_Read(HW_GPIO_FAULT_BTN);
+  61              		.loc 1 15 20 is_stmt 0 view .LVU9
+  62 0014 0120     		movs	r0, #1
+  63              	.LVL6:
+  15:bsp/src/bsp_gpio.c ****             return HW_GPIO_Read(HW_GPIO_FAULT_BTN);
+  64              		.loc 1 15 20 view .LVU10
+  65 0016 FFF7FEFF 		bl	HW_GPIO_Read
+  66              	.LVL7:
+  67 001a FAE7     		b	.L4
+  68              		.cfi_endproc
+  69              	.LFE0:
+  71              		.text
+  72              	.Letext0:
+  73              		.file 2 "hardware/inc/hw_gpio.h"
+ARM GAS  /tmp/ccw3ypPW.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 bsp_gpio.c
+     /tmp/ccw3ypPW.s:19     .text.bsp_read_button:00000000 $t
+     /tmp/ccw3ypPW.s:25     .text.bsp_read_button:00000000 bsp_read_button
+
+UNDEFINED SYMBOLS
+HW_GPIO_Read
