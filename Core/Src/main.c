@@ -62,6 +62,7 @@ void SystemClock_Config(void);
   * @brief  The application entry point.
   * @retval int
   */
+
 int main(void)
 {
 
@@ -75,7 +76,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-  app_init();
+  
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -91,7 +92,9 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
-
+  // Kien - MUST CALL app_init() after MX_USART2_UART_Init() - start.
+  app_init();
+  // Kien - MUST CALL app_init() after MX_USART2_UART_Init() - end.
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)

@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc6jRUNb.s 			page 1
+ARM GAS  /tmp/cc0eLRAJ.s 			page 1
 
 
    1              		.cpu cortex-m3
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc6jRUNb.s 			page 1
   11:hardware/src/hw_led.c ****     case HW_GPIO_C: return GPIOC;
   44              		.loc 1 11 28 view .LVU4
   45 000c 0248     		ldr	r0, .L5+4
-ARM GAS  /tmp/cc6jRUNb.s 			page 2
+ARM GAS  /tmp/cc0eLRAJ.s 			page 2
 
 
   46              	.LVL3:
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cc6jRUNb.s 			page 1
   87 0008 17D0     		beq	.L9
   88 000a 48B9     		cbnz	r0, .L7
   26:hardware/src/hw_led.c ****     {
-ARM GAS  /tmp/cc6jRUNb.s 			page 3
+ARM GAS  /tmp/cc0eLRAJ.s 			page 3
 
 
   27:hardware/src/hw_led.c ****     case HW_GPIO_A:
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cc6jRUNb.s 			page 1
  126 002e 9B69     		ldr	r3, [r3, #24]
  127 0030 03F00803 		and	r3, r3, #8
  128 0034 0293     		str	r3, [sp, #8]
-ARM GAS  /tmp/cc6jRUNb.s 			page 4
+ARM GAS  /tmp/cc0eLRAJ.s 			page 4
 
 
   31:hardware/src/hw_led.c ****         break;
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cc6jRUNb.s 			page 1
   43:hardware/src/hw_led.c **** void LED_Init(HW_LED_PORT_t LED_PORT, HW_LED_PIN_t LED_PIN)
   44:hardware/src/hw_led.c **** {
  172              		.loc 1 44 1 is_stmt 1 view -0
-ARM GAS  /tmp/cc6jRUNb.s 			page 5
+ARM GAS  /tmp/cc0eLRAJ.s 			page 5
 
 
  173              		.cfi_startproc
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cc6jRUNb.s 			page 1
   52:hardware/src/hw_led.c ****     HAL_GPIO_WritePin(hw_led_port_to_gpio(LED_PORT), LED_PIN, GPIO_PIN_SET);
  220              		.loc 1 52 5 is_stmt 1 view .LVU47
  221              		.loc 1 52 5 is_stmt 0 discriminator 1 view .LVU48
-ARM GAS  /tmp/cc6jRUNb.s 			page 6
+ARM GAS  /tmp/cc0eLRAJ.s 			page 6
 
 
  222 002e 3246     		mov	r2, r6
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cc6jRUNb.s 			page 1
  274              		.global	LED_Off
  275              		.syntax unified
  276              		.thumb
-ARM GAS  /tmp/cc6jRUNb.s 			page 7
+ARM GAS  /tmp/cc0eLRAJ.s 			page 7
 
 
  277              		.thumb_func
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cc6jRUNb.s 			page 1
  327 0002 0C46     		mov	r4, r1
   65:hardware/src/hw_led.c ****     HAL_GPIO_TogglePin(hw_led_port_to_gpio(LED_PORT), LED_PIN);
  328              		.loc 1 65 5 is_stmt 1 view .LVU65
-ARM GAS  /tmp/cc6jRUNb.s 			page 8
+ARM GAS  /tmp/cc0eLRAJ.s 			page 8
 
 
  329 0004 FFF7FEFF 		bl	hw_led_port_to_gpio
@@ -439,25 +439,25 @@ ARM GAS  /tmp/cc6jRUNb.s 			page 1
  344              		.file 3 "Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xe.h"
  345              		.file 4 "Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h"
  346              		.file 5 "hardware/inc/hw_led.h"
-ARM GAS  /tmp/cc6jRUNb.s 			page 9
+ARM GAS  /tmp/cc0eLRAJ.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 hw_led.c
-     /tmp/cc6jRUNb.s:19     .text.hw_led_port_to_gpio:00000000 $t
-     /tmp/cc6jRUNb.s:24     .text.hw_led_port_to_gpio:00000000 hw_led_port_to_gpio
-     /tmp/cc6jRUNb.s:59     .text.hw_led_port_to_gpio:00000014 $d
-     /tmp/cc6jRUNb.s:66     .text.hw_led_enable_clock:00000000 $t
-     /tmp/cc6jRUNb.s:71     .text.hw_led_enable_clock:00000000 hw_led_enable_clock
-     /tmp/cc6jRUNb.s:158    .text.hw_led_enable_clock:00000050 $d
-     /tmp/cc6jRUNb.s:163    .text.LED_Init:00000000 $t
-     /tmp/cc6jRUNb.s:169    .text.LED_Init:00000000 LED_Init
-     /tmp/cc6jRUNb.s:238    .text.LED_On:00000000 $t
-     /tmp/cc6jRUNb.s:244    .text.LED_On:00000000 LED_On
-     /tmp/cc6jRUNb.s:273    .text.LED_Off:00000000 $t
-     /tmp/cc6jRUNb.s:279    .text.LED_Off:00000000 LED_Off
-     /tmp/cc6jRUNb.s:308    .text.LED_Toggle:00000000 $t
-     /tmp/cc6jRUNb.s:314    .text.LED_Toggle:00000000 LED_Toggle
+     /tmp/cc0eLRAJ.s:19     .text.hw_led_port_to_gpio:00000000 $t
+     /tmp/cc0eLRAJ.s:24     .text.hw_led_port_to_gpio:00000000 hw_led_port_to_gpio
+     /tmp/cc0eLRAJ.s:59     .text.hw_led_port_to_gpio:00000014 $d
+     /tmp/cc0eLRAJ.s:66     .text.hw_led_enable_clock:00000000 $t
+     /tmp/cc0eLRAJ.s:71     .text.hw_led_enable_clock:00000000 hw_led_enable_clock
+     /tmp/cc0eLRAJ.s:158    .text.hw_led_enable_clock:00000050 $d
+     /tmp/cc0eLRAJ.s:163    .text.LED_Init:00000000 $t
+     /tmp/cc0eLRAJ.s:169    .text.LED_Init:00000000 LED_Init
+     /tmp/cc0eLRAJ.s:238    .text.LED_On:00000000 $t
+     /tmp/cc0eLRAJ.s:244    .text.LED_On:00000000 LED_On
+     /tmp/cc0eLRAJ.s:273    .text.LED_Off:00000000 $t
+     /tmp/cc0eLRAJ.s:279    .text.LED_Off:00000000 LED_Off
+     /tmp/cc0eLRAJ.s:308    .text.LED_Toggle:00000000 $t
+     /tmp/cc0eLRAJ.s:314    .text.LED_Toggle:00000000 LED_Toggle
 
 UNDEFINED SYMBOLS
 HAL_GPIO_Init

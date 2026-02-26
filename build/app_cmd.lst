@@ -1,0 +1,274 @@
+ARM GAS  /tmp/cc2V2pcG.s 			page 1
+
+
+   1              		.cpu cortex-m3
+   2              		.arch armv7-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"app_cmd.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "app/src/app_cmd.c"
+  18              		.section	.rodata.app_cmd_process.str1.4,"aMS",%progbits,1
+  19              		.align	2
+  20              	.LC0:
+  21 0000 72756E00 		.ascii	"run\000"
+  22              		.align	2
+  23              	.LC1:
+  24 0004 73746F70 		.ascii	"stop\000"
+  24      00
+  25 0009 000000   		.align	2
+  26              	.LC2:
+  27 000c 73746174 		.ascii	"status\000"
+  27      757300
+  28              		.section	.text.app_cmd_process,"ax",%progbits
+  29              		.align	1
+  30              		.global	app_cmd_process
+  31              		.syntax unified
+  32              		.thumb
+  33              		.thumb_func
+  35              	app_cmd_process:
+  36              	.LFB3:
+   1:app/src/app_cmd.c **** #include "app_cmd.h"
+   2:app/src/app_cmd.c **** #include "bsp_uart.h"
+   3:app/src/app_cmd.c **** #include "app_event.h"
+   4:app/src/app_cmd.c **** #include <string.h>
+   5:app/src/app_cmd.c **** 
+   6:app/src/app_cmd.c **** #define CMD_BUF_SIZE 64
+   7:app/src/app_cmd.c **** 
+   8:app/src/app_cmd.c **** static char cmd_buf[CMD_BUF_SIZE];
+   9:app/src/app_cmd.c **** static uint8_t cmd_idx = 0;
+  10:app/src/app_cmd.c **** 
+  11:app/src/app_cmd.c **** void app_cmd_process(void)
+  12:app/src/app_cmd.c **** {
+  37              		.loc 1 12 1 view -0
+  38              		.cfi_startproc
+  39              		@ args = 0, pretend = 0, frame = 8
+  40              		@ frame_needed = 0, uses_anonymous_args = 0
+  41 0000 00B5     		push	{lr}
+  42              	.LCFI0:
+  43              		.cfi_def_cfa_offset 4
+  44              		.cfi_offset 14, -4
+ARM GAS  /tmp/cc2V2pcG.s 			page 2
+
+
+  45 0002 83B0     		sub	sp, sp, #12
+  46              	.LCFI1:
+  47              		.cfi_def_cfa_offset 16
+  13:app/src/app_cmd.c ****     uint8_t ch;
+  48              		.loc 1 13 5 view .LVU1
+  14:app/src/app_cmd.c ****     
+  15:app/src/app_cmd.c ****     while (bsp_uart_read_byte(BSP_UART_VCU, &ch))
+  49              		.loc 1 15 5 view .LVU2
+  50              		.loc 1 15 11 is_stmt 0 view .LVU3
+  51 0004 1CE0     		b	.L2
+  52              	.L3:
+  16:app/src/app_cmd.c ****     {
+  17:app/src/app_cmd.c ****         
+  18:app/src/app_cmd.c ****         /* Enter hoặc newline → parse */
+  19:app/src/app_cmd.c ****         if (ch == '\r' || ch == '\n')
+  20:app/src/app_cmd.c ****         {
+  21:app/src/app_cmd.c ****             if (cmd_idx == 0)
+  53              		.loc 1 21 13 is_stmt 1 view .LVU4
+  54              		.loc 1 21 25 is_stmt 0 view .LVU5
+  55 0006 1F4B     		ldr	r3, .L14
+  56 0008 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  57              		.loc 1 21 16 view .LVU6
+  58 000a CBB1     		cbz	r3, .L2
+  22:app/src/app_cmd.c ****                 continue;   // <<< QUAN TRỌNG
+  23:app/src/app_cmd.c **** 
+  24:app/src/app_cmd.c ****             cmd_buf[cmd_idx] = '\0';
+  59              		.loc 1 24 13 is_stmt 1 view .LVU7
+  60              		.loc 1 24 30 is_stmt 0 view .LVU8
+  61 000c 1E48     		ldr	r0, .L14+4
+  62 000e 0022     		movs	r2, #0
+  63 0010 C254     		strb	r2, [r0, r3]
+  25:app/src/app_cmd.c ****             cmd_idx = 0;
+  64              		.loc 1 25 13 is_stmt 1 view .LVU9
+  65              		.loc 1 25 21 is_stmt 0 view .LVU10
+  66 0012 1C4B     		ldr	r3, .L14
+  67 0014 1A70     		strb	r2, [r3]
+  26:app/src/app_cmd.c **** 
+  27:app/src/app_cmd.c ****             if (strcmp(cmd_buf, "run") == 0)
+  68              		.loc 1 27 13 is_stmt 1 view .LVU11
+  69              		.loc 1 27 17 is_stmt 0 view .LVU12
+  70 0016 1D49     		ldr	r1, .L14+8
+  71 0018 FFF7FEFF 		bl	strcmp
+  72              	.LVL0:
+  73              		.loc 1 27 16 discriminator 1 view .LVU13
+  74 001c 68B1     		cbz	r0, .L11
+  28:app/src/app_cmd.c ****             {
+  29:app/src/app_cmd.c ****                 app_event_push(APP_EVENT_CMD_RUN);
+  30:app/src/app_cmd.c ****             }
+  31:app/src/app_cmd.c ****             else if (strcmp(cmd_buf, "stop") == 0)
+  75              		.loc 1 31 18 is_stmt 1 view .LVU14
+  76              		.loc 1 31 22 is_stmt 0 view .LVU15
+  77 001e 1C49     		ldr	r1, .L14+12
+  78 0020 1948     		ldr	r0, .L14+4
+  79 0022 FFF7FEFF 		bl	strcmp
+  80              	.LVL1:
+  81              		.loc 1 31 21 discriminator 1 view .LVU16
+  82 0026 08B3     		cbz	r0, .L12
+ARM GAS  /tmp/cc2V2pcG.s 			page 3
+
+
+  32:app/src/app_cmd.c ****             {
+  33:app/src/app_cmd.c ****                 app_event_push(APP_EVENT_CMD_STOP);
+  34:app/src/app_cmd.c ****             }
+  35:app/src/app_cmd.c ****             else if (strcmp(cmd_buf, "status") == 0)
+  83              		.loc 1 35 18 is_stmt 1 view .LVU17
+  84              		.loc 1 35 22 is_stmt 0 view .LVU18
+  85 0028 1A49     		ldr	r1, .L14+16
+  86 002a 1748     		ldr	r0, .L14+4
+  87 002c FFF7FEFF 		bl	strcmp
+  88              	.LVL2:
+  89              		.loc 1 35 21 discriminator 1 view .LVU19
+  90 0030 00BB     		cbnz	r0, .L8
+  36:app/src/app_cmd.c ****             {
+  37:app/src/app_cmd.c ****                 app_event_push(APP_EVENT_CMD_STATUS);
+  91              		.loc 1 37 17 is_stmt 1 view .LVU20
+  92 0032 0420     		movs	r0, #4
+  93 0034 FFF7FEFF 		bl	app_event_push
+  94              	.LVL3:
+  95 0038 02E0     		b	.L2
+  96              	.L11:
+  29:app/src/app_cmd.c ****             }
+  97              		.loc 1 29 17 view .LVU21
+  98 003a 0120     		movs	r0, #1
+  99 003c FFF7FEFF 		bl	app_event_push
+ 100              	.LVL4:
+ 101              	.L2:
+  15:app/src/app_cmd.c ****     {
+ 102              		.loc 1 15 12 view .LVU22
+ 103 0040 0DF10701 		add	r1, sp, #7
+ 104 0044 0020     		movs	r0, #0
+ 105 0046 FFF7FEFF 		bl	bsp_uart_read_byte
+ 106              	.LVL5:
+  15:app/src/app_cmd.c ****     {
+ 107              		.loc 1 15 12 is_stmt 0 discriminator 1 view .LVU23
+ 108 004a B8B1     		cbz	r0, .L13
+  19:app/src/app_cmd.c ****         {
+ 109              		.loc 1 19 9 is_stmt 1 view .LVU24
+  19:app/src/app_cmd.c ****         {
+ 110              		.loc 1 19 16 is_stmt 0 view .LVU25
+ 111 004c 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+  19:app/src/app_cmd.c ****         {
+ 112              		.loc 1 19 12 view .LVU26
+ 113 0050 0D2B     		cmp	r3, #13
+ 114 0052 D8D0     		beq	.L3
+  19:app/src/app_cmd.c ****         {
+ 115              		.loc 1 19 24 discriminator 1 view .LVU27
+ 116 0054 0A2B     		cmp	r3, #10
+ 117 0056 D6D0     		beq	.L3
+  38:app/src/app_cmd.c ****             }
+  39:app/src/app_cmd.c ****             else
+  40:app/src/app_cmd.c ****             {
+  41:app/src/app_cmd.c ****                 app_event_push(APP_EVENT_CMD_ERROR);
+  42:app/src/app_cmd.c ****             }
+  43:app/src/app_cmd.c ****         }
+  44:app/src/app_cmd.c ****         else
+  45:app/src/app_cmd.c ****         {
+  46:app/src/app_cmd.c ****             if (cmd_idx < CMD_BUF_SIZE - 1)
+ARM GAS  /tmp/cc2V2pcG.s 			page 4
+
+
+ 118              		.loc 1 46 13 is_stmt 1 view .LVU28
+ 119              		.loc 1 46 25 is_stmt 0 view .LVU29
+ 120 0058 0A4A     		ldr	r2, .L14
+ 121 005a 1278     		ldrb	r2, [r2]	@ zero_extendqisi2
+ 122              		.loc 1 46 16 view .LVU30
+ 123 005c 3E2A     		cmp	r2, #62
+ 124 005e EFD8     		bhi	.L2
+  47:app/src/app_cmd.c ****             {
+  48:app/src/app_cmd.c ****                 cmd_buf[cmd_idx++] = ch;
+ 125              		.loc 1 48 17 is_stmt 1 view .LVU31
+ 126              		.loc 1 48 32 is_stmt 0 view .LVU32
+ 127 0060 501C     		adds	r0, r2, #1
+ 128 0062 0849     		ldr	r1, .L14
+ 129 0064 0870     		strb	r0, [r1]
+ 130              		.loc 1 48 36 view .LVU33
+ 131 0066 0849     		ldr	r1, .L14+4
+ 132 0068 8B54     		strb	r3, [r1, r2]
+ 133 006a E9E7     		b	.L2
+ 134              	.L12:
+  33:app/src/app_cmd.c ****             }
+ 135              		.loc 1 33 17 is_stmt 1 view .LVU34
+ 136 006c 0220     		movs	r0, #2
+ 137 006e FFF7FEFF 		bl	app_event_push
+ 138              	.LVL6:
+ 139 0072 E5E7     		b	.L2
+ 140              	.L8:
+  41:app/src/app_cmd.c ****             }
+ 141              		.loc 1 41 17 view .LVU35
+ 142 0074 0320     		movs	r0, #3
+ 143 0076 FFF7FEFF 		bl	app_event_push
+ 144              	.LVL7:
+ 145 007a E1E7     		b	.L2
+ 146              	.L13:
+  49:app/src/app_cmd.c ****             }
+  50:app/src/app_cmd.c ****         }
+  51:app/src/app_cmd.c ****     }
+  52:app/src/app_cmd.c **** }...
+ 147              		.loc 1 52 1 is_stmt 0 view .LVU36
+ 148 007c 03B0     		add	sp, sp, #12
+ 149              	.LCFI2:
+ 150              		.cfi_def_cfa_offset 4
+ 151              		@ sp needed
+ 152 007e 5DF804FB 		ldr	pc, [sp], #4
+ 153              	.L15:
+ 154 0082 00BF     		.align	2
+ 155              	.L14:
+ 156 0084 00000000 		.word	cmd_idx
+ 157 0088 00000000 		.word	cmd_buf
+ 158 008c 00000000 		.word	.LC0
+ 159 0090 04000000 		.word	.LC1
+ 160 0094 0C000000 		.word	.LC2
+ 161              		.cfi_endproc
+ 162              	.LFE3:
+ 164              		.section	.bss.cmd_idx,"aw",%nobits
+ 167              	cmd_idx:
+ 168 0000 00       		.space	1
+ 169              		.section	.bss.cmd_buf,"aw",%nobits
+ARM GAS  /tmp/cc2V2pcG.s 			page 5
+
+
+ 170              		.align	2
+ 173              	cmd_buf:
+ 174 0000 00000000 		.space	64
+ 174      00000000 
+ 174      00000000 
+ 174      00000000 
+ 174      00000000 
+ 175              		.text
+ 176              	.Letext0:
+ 177              		.file 2 "/usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h"
+ 178              		.file 3 "bsp/inc/bsp_uart.h"
+ 179              		.file 4 "app/inc/app_event.h"
+ 180              		.file 5 "/usr/include/newlib/string.h"
+ARM GAS  /tmp/cc2V2pcG.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 app_cmd.c
+     /tmp/cc2V2pcG.s:19     .rodata.app_cmd_process.str1.4:00000000 $d
+     /tmp/cc2V2pcG.s:29     .text.app_cmd_process:00000000 $t
+     /tmp/cc2V2pcG.s:35     .text.app_cmd_process:00000000 app_cmd_process
+     /tmp/cc2V2pcG.s:156    .text.app_cmd_process:00000084 $d
+     /tmp/cc2V2pcG.s:167    .bss.cmd_idx:00000000 cmd_idx
+     /tmp/cc2V2pcG.s:173    .bss.cmd_buf:00000000 cmd_buf
+     /tmp/cc2V2pcG.s:168    .bss.cmd_idx:00000000 $d
+     /tmp/cc2V2pcG.s:170    .bss.cmd_buf:00000000 $d
+
+UNDEFINED SYMBOLS
+strcmp
+app_event_push
+bsp_uart_read_byte

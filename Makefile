@@ -58,9 +58,12 @@ Core/Src/sysmem.c \
 Core/Src/syscalls.c \
 app/src/app_event.c \
 app/src/app.c \
+app/src/app_cmd.c \
 bsp/src/bsp_led.c \
+bsp/src/bsp_uart.c \
 hardware/src/hw_button.c \
 hardware/src/hw_led.c \
+hardware/src/hw_uart.c \
 # ASM sources
 ASM_SOURCES =  \
 startup_stm32f103xe.s
