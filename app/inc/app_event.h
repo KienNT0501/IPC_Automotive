@@ -17,5 +17,5 @@ void app_event_init(void);
 bool app_event_push(app_event_t evt);
 bool app_event_pop(app_event_t *evt);
 bool app_event_available(void);
-
+void app_event_handle(void);
 #endif

@@ -26,8 +26,6 @@ static inline uint16_t next_index(uint16_t idx)
 
 void HW_UART_Init(HW_UART_t uart)
 {
-    //bsp_led_toggle();
-    LOG("HW INIT! \n\r");
     if (uart != HW_UART_VCU){
         return;
     }

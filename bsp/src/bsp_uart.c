@@ -24,6 +24,11 @@ bool bsp_uart_send(bsp_uart_t uart, uint8_t *data, uint16_t len){
             return false;
     }
 }
+bool bsp_uart_send_byte(bsp_uart_t uart, uint8_t byte)
+{
+    return bsp_uart_send(uart, &byte, 1);
+}
+
 bool bsp_uart_read_byte(bsp_uart_t uart, uint8_t *byte){
     switch (uart)
     {

@@ -212,9 +212,9 @@ void USART2_IRQHandler(void)
   /* USER CODE END USART2_IRQn 1 */
 }
 
-/* Kien - USER CODE BEGIN 1 */
+/* Kien - For BUTTON - USER CODE BEGIN 1 */
 void EXTI9_5_IRQHandler(void)
 {
-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_9);
+    HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_9);
 }
-/* Kien- USER CODE END 1 */
+/* Kien - For BUTTON - USER CODE END 1 */

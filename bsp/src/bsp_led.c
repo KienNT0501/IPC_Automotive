@@ -1,6 +1,6 @@
 #include "bsp_led.h"
 #include "hw_led.h"
-
+#include "bsp_uart.h"
 
 void bsp_led_init(void)
 {

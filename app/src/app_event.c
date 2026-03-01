@@ -47,3 +47,27 @@ bool app_event_pop(app_event_t *evt)
     tail = next_index(tail);
     return true;
 }
+
+void app_event_handle(void) {
+    app_event_t evt;
+    while (app_event_pop(&evt))
+    {
+        switch (evt)
+        {
+        case APP_EVENT_BUTTON_PRESS:
+             bsp_led_toggle();
+             break;
+        case APP_EVENT_CMD_RUN:
+            bsp_led_toggle();
+            break;
+        case APP_EVENT_CMD_STOP:
+            bsp_led_toggle();
+            break;
+        case APP_EVENT_CMD_STATUS:
+            bsp_led_toggle();
+            break;
+        default:
+            break;
+        }
+    }
+}

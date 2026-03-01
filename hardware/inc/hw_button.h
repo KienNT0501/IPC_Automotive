@@ -8,6 +8,6 @@ typedef enum {
 } hw_button_t;
 
 void hw_button_init(hw_button_t btn);
-uint8_t hw_button_is_pressed(hw_button_t btn);
+uint8_t hw_button_get_and_clear(void);
 
 #endif
