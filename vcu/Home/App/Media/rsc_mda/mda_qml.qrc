@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/">
+        <file>../ui/main.qml</file>
+        <file>../ui/AppHeader/AppHeader.qml</file>
+        <file>../ui/AppHeader/components/MButtonPlaylist.qml</file>
+        <file>../ui/MediaInfo/MediaInfo.qml</file>
+        <file>../ui/MediaInfo/components/MButton.qml</file>
+        <file>../ui/MediaInfo/components/MButtonPlay.qml</file>
+        <file>../ui/MediaInfo/components/MButtonAtomic.qml</file>
+        <file>../ui/MediaInfo/components/ProgressBar.qml</file>
+        <file>../ui/MediaInfo/components/AlbumArt.qml</file>
+        <file>../ui/PlaylistView/PlaylistView.qml</file>
+        <file>../ui/PlaylistView/components/ListSong.qml</file>
+        <file>../translator/ts/translate_us.ts</file>
+        <file>../translator/ts/translate_vn.ts</file>
+        <file>../translator/ts/translate_us.qm</file>
+        <file>../translator/ts/translate_vn.qm</file>
+    </qresource>
+</RCC>

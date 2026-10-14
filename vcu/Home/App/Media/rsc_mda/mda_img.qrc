@@ -1,0 +1,38 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Img/Media/album_art.png</file>
+        <file>Img/Media/back.png</file>
+        <file>Img/Media/background.png</file>
+        <file>Img/Media/Bui-Anh-Tuan.png</file>
+        <file>Img/Media/center_point.png</file>
+        <file>Img/Media/drawer.png</file>
+        <file>Img/Media/drawer_p.png</file>
+        <file>Img/Media/Ha-Anh-Tuan.png</file>
+        <file>Img/Media/hold.png</file>
+        <file>Img/Media/hold-next.png</file>
+        <file>Img/Media/hold-pause.png</file>
+        <file>Img/Media/hold-play.png</file>
+        <file>Img/Media/hold-prev.png</file>
+        <file>Img/Media/Hongkong1.png</file>
+        <file>Img/Media/music.png</file>
+        <file>Img/Media/next.png</file>
+        <file>Img/Media/pause.png</file>
+        <file>Img/Media/Phố không mùa Bùi Anh Tuấn.png</file>
+        <file>Img/Media/play.png</file>
+        <file>Img/Media/playing.png</file>
+        <file>Img/Media/playlist.png</file>
+        <file>Img/Media/playlist_item.png</file>
+        <file>Img/Media/point.png</file>
+        <file>Img/Media/prev.png</file>
+        <file>Img/Media/progress_bar.png</file>
+        <file>Img/Media/progress_bar_bg.png</file>
+        <file>Img/Media/repeat.png</file>
+        <file>Img/Media/repeat1_hold.png</file>
+        <file>Img/Media/shuffle.png</file>
+        <file>Img/Media/shuffle-1.png</file>
+        <file>Img/Media/title.png</file>
+        <file>Img/Media/us.png</file>
+        <file>Img/Media/USB Mussic.png</file>
+        <file>Img/Media/vn.png</file>
+    </qresource>
+</RCC>

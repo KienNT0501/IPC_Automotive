@@ -1,0 +1,43 @@
+<RCC>
+    <qresource prefix="/">
+        
+        <file>../HomeScreen/ui/main.qml</file>
+        <file>../HomeScreen/ui/utilities/MainHeader.qml</file>
+        <file>../HomeScreen/ui/utilities/BButton.qml</file>
+        <file>../HomeScreen/ui/utilities/AppHeader.qml</file>
+        <file>../HomeScreen/ui/widgets/HomeWidget.qml</file>
+        <file>../HomeScreen/ui/widgets/listMain/MediaWidget.qml</file>
+        <file>../HomeScreen/ui/widgets/listMain/ClimateWidget.qml</file>
+        <file>../HomeScreen/ui/widgets/listMain/MapWidget.qml</file>
+        <file>../HomeScreen/ui/widgets/listApp/ListAppWidget.qml</file>
+        <file>../HomeScreen/ui/widgets/listApp/utilities/AppButton.qml</file>
+        <file>../HomeScreen/ui/widgets/listApp/utilities/DropButtonArea.qml</file>
+        <file>../App/Media/ui/main.qml</file>
+        <file>../App/Media/ui/AppHeader/AppHeaderMedia.qml</file>
+        <file>../App/Media/ui/AppHeader/components/MButtonPlaylist.qml</file>
+        <file>../App/Media/ui/MediaInfo/MediaInfo.qml</file>
+        <file>../App/Media/ui/MediaInfo/components/MButton.qml</file>
+        <file>../App/Media/ui/MediaInfo/components/MButtonPlay.qml</file>
+        <file>../App/Media/ui/MediaInfo/components/MButtonAtomic.qml</file>
+        <file>../App/Media/ui/MediaInfo/components/ProgressBar.qml</file>
+        <file>../App/Media/ui/MediaInfo/components/AlbumArt.qml</file>
+        <file>../App/Media/ui/PlaylistView/PlaylistView.qml</file>
+        <file>../App/Media/ui/PlaylistView/components/ListSong.qml</file>
+        <file>../App/Media/translator/ts/translate_us.ts</file>
+        <file>../App/Media/translator/ts/translate_vn.ts</file>
+        <file>../App/Media/translator/ts/translate_us.qm</file>
+        <file>../App/Media/translator/ts/translate_vn.qm</file>
+        <file>../App/Climate/ui/main.qml</file>
+        <file>../App/Climate/ui/AppHeader/AppHeaderClimate.qml</file>
+        <file>../App/Map/ui/main.qml</file>
+        <file>../App/Map/ui/AppHeader/AppHeaderMap.qml</file>
+        <file>../App/Phone/ui/main.qml</file>
+        <file>../App/Phone/ui/AppHeader/AppHeaderPhone.qml</file>
+        <file>../App/Radio/ui/main.qml</file>
+        <file>../App/Radio/ui/AppHeader/AppHeaderRadio.qml</file>
+        <file>../App/Settings/ui/main.qml</file>
+        <file>../App/Settings/ui/AppHeader/AppHeaderSettings.qml</file>
+        <file>../App/Video/ui/main.qml</file>
+        <file>../App/Video/ui/AppHeader/AppHeaderVideo.qml</file>
+    </qresource>
+</RCC>
